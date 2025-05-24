@@ -5,7 +5,7 @@ class Author:
     def __init__(self, name, id=None):
         self._id = id
         self._name = None
-        self.name = name  # Use setter for validation
+        self.name = name  
         if id is None:
             self._save()
 

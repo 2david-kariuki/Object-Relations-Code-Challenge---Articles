@@ -5,25 +5,25 @@ from lib.db.connection import get_connection
 from scripts.setup_db import setup_database
 
 def seed_database():
-    setup_database()  # Ensure schema is applied
+    setup_database()  
     
     conn = get_connection()
     cursor = conn.cursor()
 
-    # Clear existing data
+    
     cursor.execute("DELETE FROM articles")
     cursor.execute("DELETE FROM authors")
     cursor.execute("DELETE FROM magazines")
 
-    # Insert authors
+    
     authors = [
-        ("Jane Doe",),
+        ("Jane ken",),
         ("John Smith",),
         ("Alice Johnson",)
     ]
     cursor.executemany("INSERT INTO authors (name) VALUES (?)", authors)
 
-    # Insert magazines
+    
     magazines = [
         ("Tech Trends", "Technology"),
         ("Health Weekly", "Health"),
@@ -31,7 +31,7 @@ def seed_database():
     ]
     cursor.executemany("INSERT INTO magazines (name, category) VALUES (?, ?)", magazines)
 
-    # Insert articles
+    
     cursor.execute("SELECT id FROM authors WHERE name = 'Jane Doe'")
     jane_id = cursor.fetchone()['id']
     cursor.execute("SELECT id FROM authors WHERE name = 'John Smith'")
