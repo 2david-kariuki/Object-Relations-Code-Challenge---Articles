@@ -1,7 +1,12 @@
-# lib/db/seed.py
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 from lib.db.connection import get_connection
+from scripts.setup_db import setup_database
 
 def seed_database():
+    setup_database()  # Ensure schema is applied
+    
     conn = get_connection()
     cursor = conn.cursor()
 
