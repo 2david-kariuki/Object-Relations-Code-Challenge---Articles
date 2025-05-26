@@ -1,0 +1,3 @@
+ requirements.txt
+ No external dependencies required; project uses Python standard library (sqlite3, os, sys)
+Python version: >=3.6 recommended
