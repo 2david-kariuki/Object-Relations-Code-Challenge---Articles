@@ -10,12 +10,10 @@ def seed_database():
     conn = get_connection()
     cursor = conn.cursor()
 
-    
     cursor.execute("DELETE FROM articles")
     cursor.execute("DELETE FROM authors")
     cursor.execute("DELETE FROM magazines")
 
-    
     authors = [
         ("Jane ken",),
         ("John Smith",),
@@ -23,7 +21,6 @@ def seed_database():
     ]
     cursor.executemany("INSERT INTO authors (name) VALUES (?)", authors)
 
-    
     magazines = [
         ("Tech Trends", "Technology"),
         ("Health Weekly", "Health"),
@@ -31,8 +28,7 @@ def seed_database():
     ]
     cursor.executemany("INSERT INTO magazines (name, category) VALUES (?, ?)", magazines)
 
-    
-    cursor.execute("SELECT id FROM authors WHERE name = 'Jane Doe'")
+    cursor.execute("SELECT id FROM authors WHERE name = 'Jane ken'")  # Fixed: 'Jane Doe' to 'Jane ken'
     jane_id = cursor.fetchone()['id']
     cursor.execute("SELECT id FROM authors WHERE name = 'John Smith'")
     john_id = cursor.fetchone()['id']
@@ -46,7 +42,7 @@ def seed_database():
     
     articles = [
         ("AI Revolution", jane_id, tech_id),
-        ("Healthy Eating", john_id, health_id),
+        ("Healthy Eating", john_id, health_id),  # Fixed: Removed 'Selv'
         ("Quantum Computing", jane_id, tech_id),
         ("Fitness Tips", alice_id, health_id)
     ]
